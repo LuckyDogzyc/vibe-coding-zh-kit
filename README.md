@@ -22,6 +22,16 @@
 
 ---
 
+
+## 零基础教程（新手必看）
+
+- 新手实操清单：`docs/guide/beginner-checklist.md`
+- 安装指引：`docs/guide/installation.md`
+
+如果你从没做过 vibecoding，先看 `beginner-checklist.md`，再开始。
+
+---
+
 ## Agent 一句话安装指令（推荐）
 
 直接把下面这句话发给任何 AI Agent：
