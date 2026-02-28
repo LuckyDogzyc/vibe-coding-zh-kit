@@ -2,17 +2,6 @@
 
 面向任意 Vibe Coding 工作流的**中文命令与技能模板**。
 
-## Guide 导航
-
-- 安装指南：`docs/guide/installation.md`
-- 零基础清单：`docs/guide/beginner-checklist.md`
-- 多工具映射：`docs/guide/tool-mappings.md`
-
-在线查看：
-- <https://github.com/LuckyDogzyc/vibe-coding-zh-kit/tree/main/docs/guide>
-
----
-
 本项目参考并对齐以下仓库的工作方式（commands + skills），做了中文化与通用化：
 - https://github.com/coleam00/link-in-bio-page-builder/
 
@@ -38,7 +27,6 @@
 
 - 新手实操清单：`docs/guide/beginner-checklist.md`
 - 安装指引：`docs/guide/installation.md`
-- 多工具映射：`docs/guide/tool-mappings.md`
 
 如果你从没做过 vibecoding，先看 `beginner-checklist.md`，再开始。
 
