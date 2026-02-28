@@ -22,6 +22,18 @@
 
 ---
 
+## Agent 一句话安装指令（推荐）
+
+直接把下面这句话发给任何 AI Agent：
+
+```text
+Install and configure vibe-coding-zh-kit by following the instructions here: https://raw.githubusercontent.com/LuckyDogzyc/vibe-coding-zh-kit/main/docs/guide/installation.md
+```
+
+安装指南文件：`docs/guide/installation.md`
+
+---
+
 ## 一键安装
 
 ### 方式一：在本仓库本地执行（推荐）
