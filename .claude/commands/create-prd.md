@@ -1,47 +1,45 @@
 ---
-description: 从当前对话生成产品需求文档（PRD）
-argument-hint: [输出文件名]
+description: 从对话内容生成产品需求文档（PRD）
+argument-hint: [output-filename]
 ---
 
-# Create PRD：生成产品需求文档
-
-## 目标
-
-根据当前对话上下文，输出一份结构完整、可执行、可评审的 PRD。
+# Create PRD: 生成产品需求文档
 
 ## 输出文件
 
-写入：`$ARGUMENTS`（默认 `PRD.md`）
+写入：`$ARGUMENTS`（默认：`PRD.md`）
 
-## 必备章节
+## PRD 结构
 
-1. 执行摘要（2-3 段）
-2. 使命与原则（3-5 条）
-3. 目标用户（画像、技术水平、痛点）
-4. MVP 范围（✅ In Scope / ❌ Out of Scope）
-5. 用户故事（5-8 条，As a / I want / So that）
-6. 核心架构与模式
-7. 功能细则
-8. 技术栈与依赖
-9. 安全与配置
-10. API 规格（如适用）
-11. 成功标准
-12. 实施阶段（3-4 阶段）
-13. 后续演进
-14. 风险与缓解
-15. 附录（可选）
+至少包含以下章节：
 
-## 写作要求
+1. Executive Summary（2-3 段，价值主张与 MVP 目标）
+2. Mission（使命与核心原则）
+3. Target Users（用户画像、技术水平、痛点）
+4. MVP Scope（✅ In Scope / ❌ Out of Scope）
+5. User Stories（5-8 条，As a / I want / So that）
+6. Core Architecture & Patterns
+7. Tools / Features（功能细则）
+8. Technology Stack（含版本与关键依赖）
+9. Security & Configuration
+10. API Specification（如适用）
+11. Success Criteria
+12. Implementation Phases（3-4 阶段）
+13. Future Considerations
+14. Risks & Mitigations
+15. Appendix（可选）
 
-- 用专业、清晰、行动导向语言
-- 优先给具体例子，避免空泛描述
-- 可使用代码块、清单、表格、勾选项
-- 信息不足时先提出澄清问题
+## 生成步骤
+
+1. 回顾对话，提取显式与隐式需求
+2. 补齐合理假设并保持一致性
+3. 使用 markdown 高质量排版
+4. 做完整性检查（章节齐全、成功标准可衡量、阶段可执行）
 
 ## 输出确认
 
-生成后请补充：
-1. 文件路径
-2. PRD 摘要
-3. 关键假设
-4. 建议下一步（评审 / 拆计划 / 执行）
+完成后请补充：
+- 文件写入路径
+- PRD 摘要
+- 关键假设
+- 下一步建议（评审/细化/实施）

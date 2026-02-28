@@ -1,55 +1,129 @@
 ---
-description: 深度分析代码库并生成高质量功能实现计划
+description: "通过深度代码库分析与外部资料研究，创建高质量功能实现计划"
 ---
 
-# Plan Feature
+# Plan a new task
 
 ## Feature: $ARGUMENTS
 
-核心原则：**本阶段不写代码，只产出可一遍落地的实施计划。**
+## Mission
 
-## 阶段 1：需求澄清
+把一个需求转化为**可一遍落地的实施计划**，通过系统化代码库分析、外部资料研究、以及策略设计来提升执行成功率。
 
-- 明确问题、用户价值、业务影响
-- 判定类型：新功能 / 增强 / 重构 / 修复
-- 复杂度评估：低 / 中 / 高
-- 形成或完善用户故事（As a / I want / So that）
+**核心原则**：本阶段不写代码。目标是产出上下文充分、依赖清晰、验证可执行的计划文档。
 
-## 阶段 2：代码库情报收集
+**关键哲学**：Context is King。计划里要有执行所需的全部关键信息（必读文件、模式示例、文档链接、验证命令），让执行阶段尽量一次成功。
 
-- 项目结构、组件边界、配置文件
-- 现有模式：命名、错误处理、日志、类型、测试
-- 依赖关系与版本约束
-- 集成点：需要新增和修改的文件
+## Planning Process
 
-## 阶段 3：外部资料与最佳实践
+### Phase 1: Feature Understanding
 
-- 官方文档与关键章节
-- 常见坑、破坏性变更、迁移建议
-- 安全与性能注意事项
+- 明确问题本质、用户价值、业务影响
+- 判定功能类型：新能力 / 增强 / 重构 / 修复
+- 评估复杂度：Low / Medium / High
+- 标出受影响系统与组件
 
-## 阶段 4：策略设计
+若用户未提供用户故事，生成：
 
-- 方案对比与取舍理由
-- 顺序依赖与风险点
-- 可维护性、可扩展性、兼容性
+```text
+As a <type of user>
+I want to <action/goal>
+So that <benefit/value>
+```
 
-## 阶段 5：输出计划
+### Phase 2: Codebase Intelligence Gathering
 
-输出文件：`.agents/plans/{kebab-case-name}.md`
+#### 1) 项目结构分析
+
+- 主语言、框架、运行时版本
+- 目录结构与架构边界
+- 配置文件位置（package.json、pyproject.toml、tsconfig 等）
+- 环境搭建与构建流程
+
+#### 2) 模式识别（必要时并行子代理）
+
+- 查找代码库中相似实现
+- 命名规范（CamelCase / snake_case / kebab-case）
+- 文件组织与模块组织模式
+- 错误处理模式
+- 日志模式
+- 反模式（anti-pattern）
+- 读取 CLAUDE.md 里的项目规则
+
+#### 3) 依赖分析
+
+- 与该功能相关的外部依赖
+- 依赖在本项目中的接入方式
+- docs / ai_docs / .agents/reference 等资料
+- 版本兼容约束
+
+#### 4) 测试模式分析
+
+- 测试框架与结构（jest / vitest / pytest / playwright 等）
+- 相似功能测试样例
+- 单测、集成测试组织方式
+- 覆盖率与质量要求
+
+#### 5) 集成点分析
+
+- 需要修改的已有文件
+- 需要新增的文件与路径
+- 路由/API 注册模式
+- 数据模型与数据库模式
+- 认证授权模式（如相关）
+
+> 若此时需求仍有歧义，先向用户提问澄清，再继续。
+
+### Phase 3: External Research & Documentation
+
+- 查官方文档与关键章节锚点
+- 查最佳实践、常见坑、已知问题
+- 查 breaking changes / migration 指南
+- 汇总为“实现前必读文档”
+
+示例格式：
+
+```markdown
+## Relevant Documentation
+
+- [Library Official Docs](https://example.com/docs#section)
+  - Why: ...
+- [Framework Guide](https://example.com/guide#integration)
+  - Why: ...
+```
+
+### Phase 4: Deep Strategic Thinking
+
+重点思考：
+- 功能如何契合现有架构？
+- 关键依赖与执行顺序？
+- 风险与失败点（边界条件、并发、异常）？
+- 测试如何覆盖完整？
+- 性能、安全、可维护性影响？
+
+### Phase 5: 生成计划文档
+
+输出到：`.agents/plans/{kebab-case-descriptive-name}.md`
 
 计划必须包含：
-- Feature 描述 / 用户故事 / 问题与方案陈述
-- 关键上下文引用（必须先读的文件与原因）
-- 新增文件清单
-- 实施阶段与逐步任务（原子化、可验证）
-- 测试策略（单测/集成/边界）
-- 验证命令分层（lint、test、integration、manual）
+- Feature 描述 / User Story / Problem Statement / Solution Statement
+- Feature metadata（类型、复杂度、受影响系统、依赖）
+- 必读文件（含路径与用途说明）
+- 新增文件列表
+- 必读文档链接（含 why）
+- 需遵循的代码模式（含示例）
+- 分阶段实施计划（Foundation / Core / Integration / Testing）
+- 原子化步骤任务（每条都有 VALIDATE 命令）
+- 测试策略（单测、集成、边界）
+- 分层验证命令（lint、unit、integration、manual）
 - 验收标准与完成清单
+- 风险与注意事项
 
-## 质量门槛
+## Report
 
-- 上下文完整：执行者无需二次调研
-- 步骤有序：自上而下可直接执行
-- 每个任务都有可执行验证命令
-- 明确关键风险与规避方式
+计划完成后请输出：
+- 方案摘要
+- 计划文件路径
+- 复杂度评估
+- 关键风险
+- 一次成功置信度（#/10）

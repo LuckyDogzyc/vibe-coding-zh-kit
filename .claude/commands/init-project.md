@@ -1,13 +1,14 @@
-# 初始化项目（通用模板）
+# Initialize Project
 
-按你项目的技术栈执行以下步骤（示例以常见 Node/Python 项目为主）：
+> 这是通用初始化模板。请根据目标项目的技术栈与 README 做等价替换。
 
-## 1) 环境文件
+## 1. 创建环境文件
+
 ```bash
 cp .env.example .env
 ```
 
-## 2) 安装依赖
+## 2. 安装依赖
 
 Node：
 ```bash
@@ -20,29 +21,46 @@ Python（uv）：
 uv sync
 ```
 
-## 3) 启动依赖服务（如数据库）
+## 3. 启动数据库/依赖服务
+
 ```bash
-docker compose up -d
+docker-compose up -d
+# 或 docker compose up -d
 ```
 
-## 4) 迁移 / 初始化数据
+## 4. 执行迁移
+
 ```bash
-# 例如：
+# 按项目替换
 # npm run db:migrate
 # uv run alembic upgrade head
 ```
 
-## 5) 启动开发服务
+## 5. 启动开发服务
+
 ```bash
-# 例如：
+# 按项目替换
 # npm run dev
 # uv run uvicorn app.main:app --reload
 ```
 
-## 6) 健康检查
+## 6. 验证启动结果
+
 ```bash
-# 根据项目实际端点替换
+# 按项目替换
 curl -s http://localhost:3000
 ```
 
-> 注意：具体命令以项目 README/脚本为准；本模板用于统一流程，而非硬编码特定框架。
+## Access Points
+
+- 文档页面（如有）
+- 健康检查接口（如有）
+- 数据库端口（如有）
+
+## Cleanup
+
+```bash
+# 停止服务
+# Ctrl+C 停掉 dev server
+# docker-compose down
+```
