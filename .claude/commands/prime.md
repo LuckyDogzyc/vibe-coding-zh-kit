@@ -1,45 +1,75 @@
 ---
-description: 预热代理，建立代码库全局认知
+description: 预热代理并加载代码库上下文
 ---
 
-# Prime: Load Project Context
+# Prime：加载项目上下文
 
-## Objective
+## 目标
 
-通过项目结构、文档、关键文件和当前 git 状态，建立可执行级理解。
+通过分析项目结构、文档和关键文件，建立完整理解。
 
-## Process
+## 流程
 
-### 1) 分析结构
+### 1. 分析项目结构
 
-- 运行：`git ls-files`
-- 运行：`tree -L 3 -I 'node_modules|__pycache__|.git|dist|build'`
+列出所有受版本控制文件：
+!`git ls-files`
 
-### 2) 阅读核心文档
+展示目录结构：
+在 Linux 上运行：`tree -L 3 -I 'node_modules|__pycache__|.git|dist|build'`
 
-- PRD / 规格文档
-- CLAUDE.md / 全局规则
-- 根目录与关键子目录 README
-- 架构文档
-- 数据库配置（如 drizzle、prisma、alembic）
+### 2. 阅读核心文档
 
-### 3) 阅读关键文件
+- 读取 PRD.md 或同类规格文档
+- 读取 CLAUDE.md 或同类全局规则
+- 读取项目根目录与关键子目录 README
+- 读取架构文档（如有）
+- 读取 drizzle 配置以理解数据库结构
 
-- 入口文件（main/index/app 等）
-- 核心配置（package.json / tsconfig / pyproject）
-- 模型/Schema 文件
-- 核心 service/controller
+### 3. 识别关键文件
 
-### 4) 理解当前状态
+基于结构识别并阅读：
+- 主入口文件（main.py、index.ts、app.py 等）
+- 核心配置（pyproject.toml、package.json、tsconfig.json）
+- 关键模型/schema 定义
+- 关键服务或控制器文件
 
-- `git log -10 --oneline`
-- `git status`
+### 4. 理解当前状态
 
-## Output Report
+检查近期活动：
+!`git log -10 --oneline`
 
-请输出可扫描摘要：
-- 项目概览（用途、类型、主技术）
-- 架构与目录分层
-- 技术栈（语言/框架/构建/测试）
-- 代码与协作原则
-- 当前分支与近期改动重点
+检查当前分支与状态：
+!`git status`
+
+## 输出报告
+
+请给出简洁总结：
+
+### 项目概览
+- 应用目的与类型
+- 主要技术与框架
+- 当前版本/状态
+
+### 架构
+- 总体结构与组织方式
+- 关键架构模式
+- 重要目录用途
+
+### 技术栈
+- 语言与版本
+- 框架与主要库
+- 构建工具与包管理器
+- 测试框架
+
+### 核心原则
+- 观察到的代码风格和约定
+- 文档标准
+- 测试策略
+
+### 当前状态
+- 当前分支
+- 近期变更重点
+- 即时风险或注意事项
+
+**请使用清晰标题和要点，确保可快速扫描。**

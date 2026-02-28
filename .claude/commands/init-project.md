@@ -1,66 +1,54 @@
-# Initialize Project
+# 初始化项目
 
-> 这是通用初始化模板。请根据目标项目的技术栈与 README 做等价替换。
+运行以下命令完成本地初始化并启动项目：
 
 ## 1. 创建环境文件
-
 ```bash
 cp .env.example .env
 ```
+从模板创建本地环境配置。
 
 ## 2. 安装依赖
-
-Node：
-```bash
-npm install
-# 或 pnpm install / yarn
-```
-
-Python（uv）：
 ```bash
 uv sync
 ```
+安装 pyproject.toml 中定义的 Python 依赖。
 
-## 3. 启动数据库/依赖服务
-
+## 3. 启动数据库
 ```bash
-docker-compose up -d
-# 或 docker compose up -d
+docker-compose up -d db
 ```
+在 Docker 中启动 PostgreSQL 18（端口 5433）。
 
-## 4. 执行迁移
-
+## 4. 执行数据库迁移
 ```bash
-# 按项目替换
-# npm run db:migrate
-# uv run alembic upgrade head
+uv run alembic upgrade head
 ```
+执行全部待迁移。
 
 ## 5. 启动开发服务
-
 ```bash
-# 按项目替换
-# npm run dev
-# uv run uvicorn app.main:app --reload
+uv run uvicorn app.main:app --reload --port 8123
 ```
+以热重载模式启动 FastAPI（端口 8123）。
 
-## 6. 验证启动结果
+## 6. 验证环境
 
 ```bash
-# 按项目替换
-curl -s http://localhost:3000
+curl -s http://localhost:8123/health
+curl -s http://localhost:8123/health/db
 ```
+两个接口都应返回 `{"status":"healthy"}`。
 
-## Access Points
+## 访问地址
 
-- 文档页面（如有）
-- 健康检查接口（如有）
-- 数据库端口（如有）
+- Swagger UI: http://localhost:8123/docs
+- Health: http://localhost:8123/health
+- Database: localhost:5433
 
-## Cleanup
+## 清理
 
 ```bash
-# 停止服务
-# Ctrl+C 停掉 dev server
-# docker-compose down
+# 停止 dev server: Ctrl+C
+# 停止数据库: docker-compose down
 ```
