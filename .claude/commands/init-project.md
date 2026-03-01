@@ -46,6 +46,13 @@ curl -s http://localhost:8123/health/db
 - Health: http://localhost:8123/health
 - Database: localhost:5433
 
+## 输出后必须附加
+
+在回复末尾给出「下一步可选流程」（2-3 项），示例：
+1. prime（预热上下文）
+2. create-rules（生成规则）
+3. plan-feature（输出实施计划）
+
 ## 清理
 
 ```bash
